@@ -18,25 +18,24 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-      // Generate index.html file
       new HtmlWebpackPlugin({
-        template: './src/index.html',
-        favicon: './src/favicon.ico',
-        chunks: ['main'],
+        template: './index.html',
+        title: 'Text Editor'
       }),
-      // Generate install.html file
-      new HtmlWebpackPlugin({
-        template: './src/install.html',
-        filename: 'install.html',
-        chunks: ['install'],
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js',
       }),
-      // Generate manifest.json file for PWA
       new WebpackPwaManifest({
-        name: 'Your App Name',
-        short_name: 'App',
-        description: 'Your app description',
-        background_color: '#ffffff',
-        theme_color: '#000000',
+        fingerprints: false,
+        inject: true,
+        name: 'Text Editor',
+        short_name: 'Editor',
+        description: 'Just Another Text Editor!',
+        background_color: '#ff0000', // Custom background color (e.g., red)
+        theme_color: '#00ff00', // Custom theme color (e.g., green)
+        start_url: '/',
+        publicPath: '/',
         icons: [
           {
             src: path.resolve('src/images/logo.png'),
@@ -45,28 +44,24 @@ module.exports = () => {
           },
         ],
       }),
-      // Generate service worker file
-      new InjectManifest({
-        swSrc: './src-sw.js',
-        swDest: 'sw.js',
-      }),
     ],
 
     module: {
       rules: [
         {
-          test: /\.js$/,
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.m?js$/,
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env'],
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
             },
           },
-        },
-        {
-          test: /\.css$/,
-          use: ['style-loader', 'css-loader'],
         },
       ],
     },
