@@ -1,20 +1,33 @@
 {
-  "name": "another_text_editor",
+  "name": "JATE",
   "version": "1.0.0",
-  "description": "We proudly present you Another_Text_Editor",
-  "main": "index.js",
+  "description": "PWA text editor",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TimothyLai1121/Another_Text_Editor.git"
+    "start:dev": "concurrently \"cd client && npm run build\" \"cd server && npm run server\"",
+    "start": "npm run build && cd server && node server.js",
+    "server": "cd server node server.js --ignore client",
+    "build": "cd client && npm run build",
+    "install": "cd client && npm install",
+    "client": "cd client && npm start"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/TimothyLai1121/Another_Text_Editor/issues"
+  "dependencies": {
+    "css-loader": "^6.7.1",
+    "express": "^4.17.1",
+    "html-webpack-plugin": "^5.5.0",
+    "if-env": "^1.0.4",
+    "mini-css-extract-plugin": "^2.6.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-pwa-manifest": "^4.3.0"
   },
-  "homepage": "https://github.com/TimothyLai1121/Another_Text_Editor#readme"
+  "devDependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4"
+  }
 }

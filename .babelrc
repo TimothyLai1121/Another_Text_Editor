@@ -1,0 +1,5 @@
+{
+    "plugins": ["@babel/plugin-proposal-object-rest-spread"]
+  }
+  // adding this plugin to the .babelrc file will allow us to use the spread operator in our code without any errors
+    // we can now use the spread operator in our code
