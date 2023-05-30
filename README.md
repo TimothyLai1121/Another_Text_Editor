@@ -61,5 +61,7 @@ Here are the steps we've taken in attempting to resolve the issues:
 3. Modified `babel-loader` and `babel-core` by removing the hat symbol from the package.json file.
 4. Adjusted the `webpack.config.js` file.
 5. Attempted to troubleshoot the Babel error displayed in the console.
+6. Here is another of my attempt https://github.com/TimothyLai1121/PWA_Text_Editor
+
 
 Stay tuned for updates as we continue to work towards resolving these issues. :hammer_and_wrench:
