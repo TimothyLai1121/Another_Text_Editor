@@ -2,6 +2,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
+// adding const WorkboxWebpackPlugin
+
 
 // TODO: Add and configure workbox plugins for a service worker and manifest file.
 // TODO: Add CSS loaders and babel to webpack.
@@ -29,8 +31,8 @@ module.exports = () => {
         name: 'JATE',
         short_name: 'JATE',
         description: 'Another simple text editor',
-        background_color: '#ffffff',
-        theme_color: '#ffffff',
+        background_color: '#ffffff', // background color for app
+        theme_color: '#ffffff', // theme color for app
         start_url: '/',
         publicPath: '/',
         fingerprints: false,
